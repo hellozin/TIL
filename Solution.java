@@ -1,5 +1,3 @@
-package hellozin;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -35,7 +33,7 @@ public class Solution {
 		boolean result = true;
 		int breads = 0;
 		
-		int N, M, K;			// N: »ç¶÷ ¼ö, M ÃÊ°¡ Áö³ª¸é K °³ÀÇ ºØ¾î»§ ¸¸µé ¼ö ÀÖ´Ù.
+		int N, M, K;			// N: ì‚¬ëŒ ìˆ˜, M ì´ˆê°€ ì§€ë‚˜ë©´ K ê°œì˜ ë¶•ì–´ë¹µ ë§Œë“¤ ìˆ˜ ìˆë‹¤.
 		N = scanner.nextInt();
 		M = scanner.nextInt();
 		K = scanner.nextInt();
