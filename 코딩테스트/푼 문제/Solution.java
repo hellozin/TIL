@@ -1,4 +1,4 @@
-import java.io.BufferedWriter;
+﻿import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,8 +9,8 @@ public class Solution {
 	private static final int CLOSING_TIME = 11111;
 	
 	public static void main(String[] args) throws IOException {
-		File inputFile = new File("C://Users//paul5//Downloads//input.txt");
-		File outputFile = new File("C://Users//paul5//Downloads//myOutput.txt");
+		File inputFile = new File("C://...//input.txt");
+		File outputFile = new File("C://...//myOutput.txt");
 		Scanner scanner = new Scanner(inputFile);
 		PrintWriter printWriter = 
 				new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
