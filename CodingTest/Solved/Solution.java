@@ -1,4 +1,4 @@
-ï»¿import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class Solution {
 		boolean result = true;
 		int breads = 0;
 		
-		int N, M, K;			// N: ì‚¬ëŒ ìˆ˜, M ì´ˆê°€ ì§€ë‚˜ë©´ K ê°œì˜ ë¶•ì–´ë¹µ ë§Œë“¤ ìˆ˜ ìˆë‹¤.
+		int N, M, K;			// N: »ç¶÷ ¼ö, M ÃÊ°¡ Áö³ª¸é K °³ÀÇ ºØ¾î»§ ¸¸µé ¼ö ÀÖ´Ù.
 		N = scanner.nextInt();
 		M = scanner.nextInt();
 		K = scanner.nextInt();
@@ -48,7 +48,7 @@ public class Solution {
 			return false;
 		
 		for(int timeCount = 1; timeCount <= CLOSING_TIME; timeCount++) {
-			if(isPossibleBake(timeCount, M))
+			if(isBakePossible(timeCount, M))
 				breads += K;
 			breads = Sale(breads, customerSchedule[timeCount]);
 			
@@ -66,7 +66,7 @@ public class Solution {
 		return breads-customers;
 	}
 	
-	private static boolean isPossibleBake(int time, int M) {
+	private static boolean isBakePossible(int time, int M) {
 		return (time % M) == 0;
 	}
 }
