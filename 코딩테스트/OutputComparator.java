@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class OutputComparator {
 	public static void main(String[] args) throws IOException {
-		File file = new File("C://Users//paul5//Downloads//myOutput.txt");
-	    File file2 = new File("C://Users//paul5//Downloads//output.txt");
+		File file = new File("C://...//myOutput.txt");
+	    File file2 = new File("C://...//output.txt");
 
 	    BufferedReader reader = new BufferedReader(new FileReader(file));
 	    BufferedReader reader2 = new BufferedReader(new FileReader(file2));
@@ -17,21 +17,21 @@ public class OutputComparator {
 	    String data2 = null;
 	    boolean hasAnyDifferLine = false;
 	    
-	    while((data = reader.readLine()) != null) { // ÀĞÀ»°Ô ¾øÀ¸¸é null ¸®ÅÏ
+	    while((data = reader.readLine()) != null) { // ì½ì„ê²Œ ì—†ìœ¼ë©´ null ë¦¬í„´
 	        data2 = reader2.readLine();
 	        if (data2 == null)
 	            break;
 	        
 	        if (!data.equals(data2)) {
 	        	hasAnyDifferLine = true;
-	            System.out.println("Á¤´ä: "+data);
-	            System.out.println("\t¿À´ä: "+data2);
+	            System.out.println("ì •ë‹µ: "+data);
+	            System.out.println("\tì˜¤ë‹µ: "+data2);
 	        }
 	    }
 	    if (hasAnyDifferLine) 
-	        System.out.println("¿À´äÀÔ´Ï´Ù.");
+	        System.out.println("ì˜¤ë‹µì…ë‹ˆë‹¤.");
 	    else 
-	    	System.out.println("Á¤´äÀÔ´Ï´Ù.");
+	    	System.out.println("ì •ë‹µì…ë‹ˆë‹¤.");
 	    
 	    reader.close();
 	    reader2.close();
