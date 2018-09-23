@@ -1,3 +1,10 @@
+/***
+	From: SW Expert Academy
+	Name: 1860. Áø±âÀÇ ÃÖ°í±Þ ºØ¾î»§
+	Link:
+	https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LsaaqDzYDFAXc&categoryId=AV5LsaaqDzYDFAXc&categoryType=CODE&&&
+***/
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
