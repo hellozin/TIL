@@ -1,6 +1,6 @@
 /***
 	From: SW Expert Academy
-	Name: 1860. Áø±âÀÇ ÃÖ°í±Ş ºØ¾î»§
+	Name: 1860. ì§„ê¸°ì˜ ìµœê³ ê¸‰ ë¶•ì–´ë¹µ
 	Link:
 	https://www.swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LsaaqDzYDFAXc&categoryId=AV5LsaaqDzYDFAXc&categoryType=CODE&&&
 ***/
@@ -40,7 +40,7 @@ public class Solution {
 		boolean result = true;
 		int breads = 0;
 		
-		int N, M, K;			// N: »ç¶÷ ¼ö, M ÃÊ°¡ Áö³ª¸é K °³ÀÇ ºØ¾î»§ ¸¸µé ¼ö ÀÖ´Ù.
+		int N, M, K;			// N: ì‚¬ëŒ ìˆ˜, M ì´ˆê°€ ì§€ë‚˜ë©´ K ê°œì˜ ë¶•ì–´ë¹µ ë§Œë“¤ ìˆ˜ ìˆë‹¤.
 		N = scanner.nextInt();
 		M = scanner.nextInt();
 		K = scanner.nextInt();
