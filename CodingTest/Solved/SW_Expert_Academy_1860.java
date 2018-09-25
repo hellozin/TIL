@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Solution {
+public class SW_Expert_Academy_1860 {
 	private static final int CLOSING_TIME = 11111;
 	
 	public static void main(String[] args) throws IOException {
@@ -25,7 +25,7 @@ public class Solution {
 		int numOfTestCase = scanner.nextInt();
 		
 		for(int testCount = 1; testCount <= numOfTestCase; testCount++) {
-			boolean isSolutionPossible = SolutionEX(scanner);
+			boolean isSolutionPossible = Solution(scanner);
 			
 			if(isSolutionPossible)
 				printWriter.println("#"+testCount+" Possible");
@@ -36,7 +36,7 @@ public class Solution {
 		printWriter.close();
 	}
 	
-	private static boolean SolutionEX(Scanner scanner) {
+	private static boolean Solution(Scanner scanner) {
 		boolean result = true;
 		int breads = 0;
 		
