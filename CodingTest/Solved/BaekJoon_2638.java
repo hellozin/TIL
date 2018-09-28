@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Chease {
+public class BaekJoon_2638 {
 	static int M,N;
-    static int board[][];
-    int time = 0;
+    	static int board[][];
+    	int time = 0;
     
 	public static void main(String...args) throws IOException {
 		File inputFile = new File("C://...");
@@ -23,10 +23,10 @@ public class Chease {
         
         int hours = 0;
         while(true) {
-        	// ¿ÜºÎ °ø±â¿Í ³»ºÎ °ø±â ±¸ºĞ
+        	// ì™¸ë¶€ ê³µê¸°ì™€ ë‚´ë¶€ ê³µê¸° êµ¬ë¶„
         	checkExternalAir(0,0);           
             
-        	// ¿ÜºÎ °ø±â¿¡ ³ëÃâµÈ ¸éÀÇ ¼ö
+        	// ì™¸ë¶€ ê³µê¸°ì— ë…¸ì¶œëœ ë©´ì˜ ìˆ˜
             int exposed = 0;
             for(int i = 0; i < M; i++) {
                 for(int j = 0; j < N; j++) {
@@ -40,7 +40,7 @@ public class Chease {
                         if(board[i][j-1] == 2)
                         	exposed++;
                         
-                        // ³ëÃâµÈ ¸éÀÇ ¼ö°¡ 2°³ ÀÌ»óÀÌ¸é Ä¡Áî ³ìÀ½(1->0)
+                        // ë…¸ì¶œëœ ë©´ì˜ ìˆ˜ê°€ 2ê°œ ì´ìƒì´ë©´ ì¹˜ì¦ˆ ë…¹ìŒ(1->0)
                         if(exposed > 1)
                             board[i][j] = 0;
                         exposed = 0;
@@ -51,16 +51,16 @@ public class Chease {
             boolean isCheeseLeft = false;
             for(int i = 0; i < M; i++) {
                 for(int j = 0; j < N; j++) {
-                	// ¿ÜºÎ °ø±â ±¸ºĞ ÇØÁ¦
+                	// ì™¸ë¶€ ê³µê¸° êµ¬ë¶„ í•´ì œ
                 	if(board[i][j] == 2)
                 		board[i][j] = 0;
-                	// Ä¡Áî°¡ ³²¾Ò´ÂÁö È®ÀÎ
+                	// ì¹˜ì¦ˆê°€ ë‚¨ì•˜ëŠ”ì§€ í™•ì¸
                 	if(board[i][j] == 1)
                 		isCheeseLeft = true;
                 }
             }
             hours++;
-            // Ä¡Áî°¡ ´õÀÌ»ó ¾øÀ¸¸é Á¾·á
+            // ì¹˜ì¦ˆê°€ ë”ì´ìƒ ì—†ìœ¼ë©´ ì¢…ë£Œ
             if(!isCheeseLeft)
             	break;
         }
