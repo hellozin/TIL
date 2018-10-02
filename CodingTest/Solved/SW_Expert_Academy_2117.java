@@ -1,10 +1,8 @@
-package hellozin;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Security {
+public class SW_Expert_Academy_1860 {
 	private static Scanner scanner;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -21,35 +19,35 @@ public class Security {
 	}
 	
 	private static int Solution() {
-		int mapSize = scanner.nextInt();		//	NxN ¹è¿­ÀÇ N °ª
-		int amount = scanner.nextInt();			//	°¡±¸ ÇÏ³ª°¡ ÁöºÒÇÒ ¼ö ÀÖ´Â ±İ¾×
+		int mapSize = scanner.nextInt();		//	NxN ë°°ì—´ì˜ N ê°’
+		int amount = scanner.nextInt();			//	ê°€êµ¬ í•˜ë‚˜ê°€ ì§€ë¶ˆí•  ìˆ˜ ìˆëŠ” ê¸ˆì•¡
 		
 		int[][] map = makeMap(mapSize);
 		ArrayList<House> houseLocation = getHouseLocation(map); 
 		
 		/*
-		 *	°¡Àå Å« ¿µ¿ªºÎÅÍ ¿µ¿ªÀ» ÁÙ¿©°£´Ù.
-		 *	Ã³À½À¸·Î ÀÌÀÍÀÌ »ı±â´Â ¿µ¿ªÅ©±â¿¡¼­ ¹æ¹ü ÇıÅÃÀ» ¹Ş´Â °¡±¸ ¼ö°¡ ÃÖ´ë°¡ µÈ´Ù.
-		 *	Ã³À½À¸·Î ÀÌÀÍÀÌ »ı±â´õ¶óµµ Å½»öÇÏÁö ¾ÊÀº ÁÂÇ¥¿¡¼­ °¡±¸ ¼ö°¡ ´õ ¸¹À» ¼ö ÀÖ±â ¶§¹®¿¡
-		 *		³²Àº ÁÂÇ¥¸¦ ¸¶Àú Å½»öÇÑ ÈÄ ÃÖ´ë°ªÀ» ¹İÈ¯ÇÑ´Ù. 
+		 *	ê°€ì¥ í° ì˜ì—­ë¶€í„° ì˜ì—­ì„ ì¤„ì—¬ê°„ë‹¤.
+		 *	ì²˜ìŒìœ¼ë¡œ ì´ìµì´ ìƒê¸°ëŠ” ì˜ì—­í¬ê¸°ì—ì„œ ë°©ë²” í˜œíƒì„ ë°›ëŠ” ê°€êµ¬ ìˆ˜ê°€ ìµœëŒ€ê°€ ëœë‹¤.
+		 *	ì²˜ìŒìœ¼ë¡œ ì´ìµì´ ìƒê¸°ë”ë¼ë„ íƒìƒ‰í•˜ì§€ ì•Šì€ ì¢Œí‘œì—ì„œ ê°€êµ¬ ìˆ˜ê°€ ë” ë§ì„ ìˆ˜ ìˆê¸° ë•Œë¬¸ì—
+		 *		ë‚¨ì€ ì¢Œí‘œë¥¼ ë§ˆì € íƒìƒ‰í•œ í›„ ìµœëŒ€ê°’ì„ ë°˜í™˜í•œë‹¤. 
 		 */
 		for(int serviceArea = mapSize+1; serviceArea > 0; serviceArea--) {
 			//	cost = K*K + (K-1)*(K-1)
 			int cost = serviceArea*serviceArea + (serviceArea-1)*(serviceArea-1);
-			int maxServiced = 0;				//	¹æ¹ü ÇıÅÃÀ» ¹Ş´Â ÃÖ´ë °¡±¸ ¼ö
+			int maxServiced = 0;				//	ë°©ë²” í˜œíƒì„ ë°›ëŠ” ìµœëŒ€ ê°€êµ¬ ìˆ˜
 			
 			/*
-			 *	mapÀÇ ¸ğµç ÁÂÇ¥¿¡ ´ëÇØ serviceArea Å©±âÀÇ ¿µ¿ªÀ» ¼³Á¤
+			 *	mapì˜ ëª¨ë“  ì¢Œí‘œì— ëŒ€í•´ serviceArea í¬ê¸°ì˜ ì˜ì—­ì„ ì„¤ì •
 			 */
 			for(int i = 0; i < mapSize; i++) {
 				for(int j = 0; j < mapSize; j++) {
-					int total = 0;				//	ÀÌÀÍ¿¡¼­ ¿î¿µºñ¸¦ »« °ª
-					int benefit = 0;			//	ÇıÅÃÀ» ¹Ş´Â °¡±¸¿¡¼­ ³ª¿Â ÀÌÀÍ
-					int servicedHouseCount = 0;	//	ÇıÅÃÀ» ¹Ş´Â °¡±¸ÀÇ ¼ö
+					int total = 0;				//	ì´ìµì—ì„œ ìš´ì˜ë¹„ë¥¼ ëº€ ê°’
+					int benefit = 0;			//	í˜œíƒì„ ë°›ëŠ” ê°€êµ¬ì—ì„œ ë‚˜ì˜¨ ì´ìµ
+					int servicedHouseCount = 0;		//	í˜œíƒì„ ë°›ëŠ” ê°€êµ¬ì˜ ìˆ˜
 					
 					for(House house : houseLocation)
 						/*
-						 * ¿µ¿ªÀÇ Áß½É¿¡¼­ °¡±¸¿ÍÀÇ °Å¸®°¡ serviceArea-1 º¸´Ù ÀÛÀ¸¸é ÇıÅÃÀ» ¹Ş´Â´Ù.
+						 * ì˜ì—­ì˜ ì¤‘ì‹¬ì—ì„œ ê°€êµ¬ì™€ì˜ ê±°ë¦¬ê°€ serviceArea-1 ë³´ë‹¤ ì‘ìœ¼ë©´ í˜œíƒì„ ë°›ëŠ”ë‹¤.
 						 */
 						if(distance(i,house.i)+distance(j,house.j) <= serviceArea-1) {
 							benefit += amount;
@@ -57,7 +55,7 @@ public class Security {
 						}
 					
 					/*
-					 *	ÀÌÀÍÀÌ »ı±â¸é ÃÖ´ë°ªÀ» ºñ±³ÇÑ µÚ ¼³Á¤ÇÑ´Ù.
+					 *	ì´ìµì´ ìƒê¸°ë©´ ìµœëŒ€ê°’ì„ ë¹„êµí•œ ë’¤ ì„¤ì •í•œë‹¤.
 					 */
 					total = benefit - cost;
 					if(total >= 0 && maxServiced < servicedHouseCount)
@@ -71,7 +69,7 @@ public class Security {
 	}
 	
 	/*
-	 *	ÀÔ·Â°ªÀ» ÅëÇØ ÀÌÂ÷¿ø µµ½Ã ¹è¿­À» ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+	 *	ì…ë ¥ê°’ì„ í†µí•´ ì´ì°¨ì› ë„ì‹œ ë°°ì—´ì„ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 	 */
 	private static int[][] makeMap(int size) {
 		int[][] map = new int[size][size];
@@ -83,7 +81,7 @@ public class Security {
 	}
 	
 	/*
-	 * ¸ğµç ÁıÀÇ À§Ä¡¸¦ ArrayList¿¡ ÀúÀåÇØ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+	 * ëª¨ë“  ì§‘ì˜ ìœ„ì¹˜ë¥¼ ArrayListì— ì €ì¥í•´ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 	 */
 	private static ArrayList<House> getHouseLocation(int[][] map) {
 		ArrayList<House> houseLocation = new ArrayList<>();
@@ -98,14 +96,14 @@ public class Security {
 	}
 	
 	/*
-	 *	µÎ ÁöÁ¡ »çÀÌÀÇ °Å¸®¸¦ ±¸ÇÏ´Â ÇÔ¼ö 
+	 *	ë‘ ì§€ì  ì‚¬ì´ì˜ ê±°ë¦¬ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜ 
 	 */
 	private static int distance(int src, int dst) { 
 		return src > dst ? src-dst :dst-src; 
 	}
 	
 	/*
-	 *	ÁıÀÇ x,y ÁÂÇ¥¸¦ ÀúÀåÇÏ´Â Å¬·¡½º
+	 *	ì§‘ì˜ x,y ì¢Œí‘œë¥¼ ì €ì¥í•˜ëŠ” í´ë˜ìŠ¤
 	 */
 	private static class House {
 		int i;
