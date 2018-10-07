@@ -19,51 +19,49 @@ public class SW_Expert_Academy_1860 {
     }
     
     private static int Solution() {
-        int mapSize = scanner.nextInt();	//	NxN 배열의 N 값
-        int amount = scanner.nextInt();		//  가구 하나가 지불할 수 있는 금액
+        int mapSize = scanner.nextInt();    //	NxN 배열의 N 값
+        int amount  = scanner.nextInt();    //  house 하나가 지불할 수 있는 금액
         
         int[][] map = makeMap(mapSize);
         ArrayList<House> houseLocation = getHouseLocation(map); 
         
         /*
-         *  map 전체를 항상 덮는 가장 큰 영역부터 영역을 줄여간다.
-         *  처음으로 이익이 생기는 영역크기에서 방범 혜택을 받는 가구 수가 최대가 된다.
-         *  처음으로 이익이 생기더라도 탐색하지 않은 좌표에서 가구 수가 더 많을 수 있기 때문에
+         *  map 전체를 항상 덮는 가장 큰 마름모부터 크기를 1씩 줄여나간다.
+         *  처음으로 이익이 생기는 영역크기에서 방범 혜택을 받는 house 수가 최대가 된다.
+         *  처음으로 이익이 생기더라도 탐색하지 않은 좌표에서 house 수가 더 많을 수 있기 때문에
          *    남은 좌표를 마저 탐색한 후 최대값을 반환한다. 
          */
         for(int serviceArea = mapSize+1; serviceArea > 0; serviceArea--) {
             //  cost = K*K + (K-1)*(K-1)
             int cost = serviceArea*serviceArea + (serviceArea-1)*(serviceArea-1);
-            int maxServiced = 0;            //  방범 혜택을 받는 최대 가구 수
+            int maxServicedHouses = 0;
             
             /*
              *  map의 모든 좌표에 대해 serviceArea 크기의 영역을 설정
              */
             for(int i = 0; i < mapSize; i++) {
                 for(int j = 0; j < mapSize; j++) {
-                    int total = 0;        		//  이익에서 운영비를 뺀 값
-                    int benefit = 0;      		//  혜택을 받는 가구에서 나온 이익
-                    int servicedHouseCount = 0;	//  혜택을 받는 가구의 수
+                    int servicedHouseCount = 0;	//  혜택을 받는 house의 수
                     
+                    /*
+                     * 모든 house에 대해 serviceArea 내에 존재하는지 확인하는 부분 (마름모 내에 존재)
+                     * 마름모의 중심에서 house와의 거리가 serviceArea-1 보다 작으면 혜택을 받는다.
+                     */
                     for(House house : houseLocation)
-                        /*
-                         * 영역의 중심에서 가구와의 거리가 serviceArea-1 보다 작으면 혜택을 받는다.
-                         */
-                        if(distance(i,house.i)+distance(j,house.j) <= serviceArea-1) {
-                            benefit += amount;
+                        if(distance(i,house.i)+distance(j,house.j) <= serviceArea-1)
                             servicedHouseCount++;
-                        }
                     
                     /*
                      *  이익이 생기면 최대값을 비교한 뒤 설정한다.
+                     *  총 이익 = ( 마름모 내에 존재하는 house 수 * house 1개가 지불하는 금액 ) - Area 유지비용
                      */
-                    total = benefit - cost;
-                    if(total >= 0 && maxServiced < servicedHouseCount)
-                        maxServiced = servicedHouseCount;
+                    int total = servicedHouseCount * amount - cost;
+                    if(total >= 0 && maxServicedHouses < servicedHouseCount)
+                        maxServicedHouses = servicedHouseCount;
                 }
             }
-            if(maxServiced != 0)
-                return maxServiced;
+            if(maxServicedHouses != 0)
+                return maxServicedHouses;
         }
         return 0;
     }
