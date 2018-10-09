@@ -26,7 +26,6 @@ public class SW_Expert_Academy_1860 {
         ArrayList<House> houseLocation = getHouseLocation(map); 
         
         for(int serviceArea = mapSize+1; serviceArea > 0; serviceArea--) {
-            //  cost = K*K + (K-1)*(K-1)
             int cost = serviceArea*serviceArea + (serviceArea-1)*(serviceArea-1);
             int maxServicedHouses = 0;
             
