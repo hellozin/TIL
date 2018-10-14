@@ -9,11 +9,11 @@ public class Sale {
 	static Scanner scanner;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		File inputFile = new File("C:\\Users\\paul5\\Downloads\\sample_input.txt");
+		File inputFile = new File("sample_input.txt");
 		scanner = new Scanner(inputFile);
 					
 		int numOfTestCase = scanner.nextInt();
-		for(int testCount = 1; testCount <= 2; testCount++) {
+		for(int testCount = 1; testCount <= numOfTestCase; testCount++) {
 			int result = Solution();
 			System.out.println("#"+testCount+" "+result);
 		}			
@@ -22,22 +22,20 @@ public class Sale {
 	
 	private static int Solution() {
 		int numOfClothes = scanner.nextInt();
-		ArrayList<Integer> clothese = new ArrayList<>();
+		ArrayList<Integer> clothes = new ArrayList<>();
 		
 		for(int i = 0; i < numOfClothes; i++)
-			clothese.add(scanner.nextInt());
+			clothes.add(scanner.nextInt());
 
-		Collections.sort(clothese);
-		Collections.reverse(clothese);
+		Collections.sort(clothes);
+		Collections.reverse(clothes);
 		
 		int sum = 0;
 		for(int i = 0; i < numOfClothes; i++) {
 			if((i+1)%3 == 0)
 				continue;
-			sum += clothese.get(i);
+			sum += clothes.get(i);
 		}
-		
 		return sum;
 	}
-
 }
