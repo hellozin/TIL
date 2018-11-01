@@ -52,7 +52,7 @@ public class SquarRoom {
 	private static void find(final Point p, int pre) {
 		if(OutOfArrayBound(p)) 		return;
 		if(visited[p.i][p.j] != 0) 	return;
-		if(!canMove(p,pre))			return;
+		if(!canMove(p,pre))		return;
 		
 		int current = map[p.i][p.j];		
 		visited[p.i][p.j]++;
