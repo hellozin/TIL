@@ -79,7 +79,7 @@ public class PathFinding {
 		answer = new int[2][nodeinfo.length];
 		answerIndex = 0;		
 		inorder(nodeinfo, rootIndex, 0, nodeinfo.length);
-        answerIndex = 0;
+        	answerIndex = 0;
 		postorder(nodeinfo, rootIndex, 0, nodeinfo.length);
 		return answer;
 	}
@@ -196,9 +196,9 @@ public class PathFinding {
 //			Node newNode = null;
 //			if(temp != null) {
 //				newNode = new Node(temp.parent
-//								 , (x < temp.x) ? null : temp
-//								 , (x < temp.x) ? temp : null
-//								 , x, y);
+//						, (x < temp.x) ? null : temp
+//						, (x < temp.x) ? temp : null
+//						, x, y);
 //				if(temp == root)
 //					root = newNode;
 //				temp.parent = newNode;
