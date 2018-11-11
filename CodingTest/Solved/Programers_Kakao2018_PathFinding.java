@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class PathFinding {
-	static int[] number;
 	static int answer[][];
 	static int answerIndex;
 	public static void main(String[] args) throws Exception {
@@ -60,18 +59,16 @@ public class PathFinding {
 				prev.next = node;
 		}
 		
-		number = new int[nodeinfo.length];
 		Node temp = first;
 		int index = 0;
 		int rootIndex = 0;
 		while(temp != null) {
-			nodeinfo[index][0] = temp.x;
+			nodeinfo[index][0] = temp.n;
 			nodeinfo[index][1] = temp.y;
 
 			if(temp == root)
 				rootIndex = index;
 
-			number[index] = temp.n;
 			index++;
 			temp = temp.next;
 		}
@@ -85,7 +82,7 @@ public class PathFinding {
 	}
 	
 	private static void inorder(final int[][] nodeinfo, int parent, int leftBound, int rightBound) {
-		answer[0][answerIndex++] = number[parent];
+		answer[0][answerIndex++] = nodeinfo[parent][0];
 		
 		int left = -1;
 		int leftIndex = 0;
@@ -131,7 +128,7 @@ public class PathFinding {
 		if(right != -1)
 			postorder(nodeinfo, rightIndex, parent+1, rightBound);
 		
-		answer[1][answerIndex++] = number[parent];
+		answer[1][answerIndex++] = nodeinfo[parent][0];
 	}
 	
 	static class Node {
