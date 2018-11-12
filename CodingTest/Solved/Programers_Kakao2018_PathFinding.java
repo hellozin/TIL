@@ -145,82 +145,38 @@ public class PathFinding {
 		}
 		
 	}
-
-//	static class Node {
-//		Node parent;
-//		Node lchild;
-//		Node rchild;
-//		int x;
-//		int y;
-//		
-//		public Node() {
-//			this.parent = null;
-//			this.lchild = null;
-//			this.rchild = null;
-//			x = y = 0;
-//		}
-//
-//		public Node(Node parent, Node lchild, Node rchild, int x, int y) {
-//			super();
-//			this.parent = parent;
-//			this.lchild = lchild;
-//			this.rchild = rchild;
-//			this.x = x;
-//			this.y = y;
-//		}
-//	}
-//	public static int[][] solution(int[][] nodeinfo) {
-//		Node root = null;
-//		
-//		for(int i = 0; i < nodeinfo.length; i++) {
-//			int x = nodeinfo[i][0];
-//			int y = nodeinfo[i][1];
-//			if(root == null) {
-//				root = new Node(null, null, null, x, y);
-//				continue;
-//			}
-//			Node temp = root;
-//			Node parent = temp;
-//			while(temp != null) {
-//				parent = temp;
-//				if(y < temp.y) {
-//					temp = (x < temp.x) ? temp.lchild : temp.rchild;
-//				}
-//				else
-//					 break;
-//			}
-//			
-//			Node newNode = null;
-//			if(temp != null) {
-//				newNode = new Node(temp.parent
-//						, (x < temp.x) ? null : temp
-//						, (x < temp.x) ? temp : null
-//						, x, y);
-//				if(temp == root)
-//					root = newNode;
-//				temp.parent = newNode;
-//				parent = newNode.parent;
-//			}
-//			else
-//				newNode = new Node(parent, null, null, x, y);
-//			
-//			if(parent != null) {
-//				if(x < parent.x)
-//					parent.lchild = newNode;
-//				else
-//					parent.rchild = newNode;
-//			}
-//		}
-//		inorder(root);
-//		return null;
-//	}
-//	
-//	private static void inorder(Node node) {
-//		if(node == null)
-//			return;
-//		System.out.println(node.x +" "+node.y);
-//		inorder(node.lchild);
-//		inorder(node.rchild);
-//		System.out.println("*");
-//	}
 }
+
+/*
+	테스트 1 〉		통과 (2.74ms, 45.1MB)
+	테스트 2 〉		통과 (2.10ms, 47.8MB)
+	테스트 3 〉		통과 (2.17ms, 48.1MB)
+	테스트 4 〉		통과 (2.20ms, 48.2MB)
+	테스트 5 〉		통과 (2.17ms, 48.1MB)
+	테스트 6 〉		통과 (46.99ms, 49.9MB)
+	테스트 7 〉		통과 (33.25ms, 48.4MB)
+	테스트 8 〉		통과 (34.72ms, 51.9MB)
+	테스트 9 〉		통과 (204.58ms, 59MB)
+	테스트 10 〉	통과 (21.35ms, 53.7MB)
+	테스트 11 〉	통과 (202.06ms, 59MB)
+	테스트 12 〉	통과 (226.55ms, 55.6MB)
+	테스트 13 〉	통과 (2.70ms, 44.8MB)
+	테스트 14 〉	통과 (12.89ms, 50.8MB)
+	테스트 15 〉	통과 (48.04ms, 53.7MB)
+	테스트 16 〉	통과 (140.89ms, 58.5MB)
+	테스트 17 〉	통과 (11.62ms, 48.6MB)
+	테스트 18 〉	통과 (140.45ms, 57.5MB)
+	테스트 19 〉	통과 (14.70ms, 53.5MB)
+	테스트 20 〉	통과 (35.54ms, 53.4MB)
+	테스트 21 〉	통과 (60.83ms, 57.7MB)
+	테스트 22 〉	통과 (143.79ms, 55.6MB)
+	테스트 23 〉	통과 (148.07ms, 58.4MB)
+	테스트 24 〉	통과 (2.25ms, 48.2MB)
+	테스트 25 〉	통과 (2.16ms, 48.1MB)
+	테스트 26 〉	통과 (29.95ms, 54.3MB)
+	테스트 27 〉	통과 (2.23ms, 44.9MB)
+	테스트 28 〉	통과 (2.18ms, 48MB)
+	테스트 29 〉	통과 (2.13ms, 47.7MB)
+	정확성: 100.0
+	합계: 100.0 / 100.0
+*/
