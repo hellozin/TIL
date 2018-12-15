@@ -17,14 +17,21 @@ public class Box {
 			count[i] = 1;
 		}
 		
-		for(int i = 1; i < length; i++) {
-			int max = 0;
-			for(int j = 0; j < i; j++) {
-				if(boxes[j] < boxes[i] && count[j] > max)
-					max = count[j];
+		for(int i = 0; i < length-1; i++) {
+			for(int j = i+1; j < length; j++) {
+				if(boxes[i] < boxes[j] && count[i] == count[j])
+					count[j]++;
 			}
-			count[i] += max;
 		}
+		
+//		for(int i = 1; i < length; i++) {
+//			int max = 0;
+//			for(int j = i-1; j >= 0; j--) {
+//				if(boxes[j] < boxes[i] && count[j] > max)
+//					max = count[j];
+//			}
+//			count[i] += max;
+//		}
 		
 		int max = 0;
 		for(int i = 0; i < length; i++)
