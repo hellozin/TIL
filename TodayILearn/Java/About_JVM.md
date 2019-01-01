@@ -29,9 +29,7 @@ Run time 시점에 클래스를 로딩하게 해주며 클래스의 인스턴스
 
 **Method Area**
 
-프로그램 실행 중 클래스가 사용되면 JVM은 해당 클래스 파일을 분석한 뒤 클래스의 인스턴스 변수, 메소드 코드 등을 **Method Area**에 저장한다.
-
-프로그램이 실행될 때 모든 코드가 저장되어 있는 것은 아니며 new 키워드를 통해 객체가 동적으로 생성되기 이전에는 텍스트로 남아있다.
+프로그램 실행 중 클래스가 사용되면 JVM은 해당 클래스 파일을 분석한 뒤 클래스의 인스턴스 변수, 메소드 코드 등을 **Method Area**에 저장한다. 프로그램이 실행될 때 모든 코드가 저장되어 있는 것은 아니며 new 키워드를 통해 객체가 동적으로 생성되기 이전에는 텍스트로 남아있다.
 
 객체가 생성된 후에 메소드를 실행하게 되면 해당 클래스 코드에 대한 정보를 **Method Area**에 저장하며 저장하는 내역은 다음과 같다.
 
@@ -68,3 +66,23 @@ JVM은 Stacks-Base한 방식, CPU에 직접 Instruction을 수행하지 않고 S
 **Native Method Stacks**
 
 자바 이외의 언어에서 제공되는 Method의 정보가 저장되는 영역, JNI를 통해 표준에 가까운 방식으로 구현할 수 있다.
+
+### Execution Engine
+
+바이트코드를 실행하는 Runtime Module. Class Loader를 통해 JVM 내의 Runtime Data Areas에 배치된 바이트코드는 Execution Engine에 의해 실행되며, 바이트코드의 명령어 단위로 읽어서 실행한다.
+
+초기 JVM은 Interpreter 방식을 사용해 속도가 느리다는 단점이 있었지만 JIT compiler 방식을 통해 이점을 보완했다. 하지만 JIT 또한 변환하는데 비용이 발생하기 때문에 모든 코드를 JIT 방식으로 컴파일 하지 않고 Interpreter 방식을 사용하다 일정한 기준이 넘어가면 JIT compiler 방식을 사용한다.
+
+### JIT compile
+
+전통적인 컴파일 기법은 interpreter 방식과 static compile 방식으로 나눌 수 있는데 Interpreter 방식은 Runtime에 프로그래밍 언어를 읽어가며 해당 기능에 대응하는 기계어 코드를 실행하고 static compile은 실행하기 전에 컴파일을 완료한다.
+
+JIT는 두 가지 방식을 혼합한 방식으로 이해할 수 있는데 Runtime 시 Interpreter 방식으로 기계어 코드를 생성하며 동시에 캐싱해 같은 기계어 코드를 중복 생성하는 것을 방지한다. 
+
+따라서 이 과정을 위해 초반에 메모리를 할당하는 등 선행작업에 의해 초기 실행속도는 다소 느릴 수 있지만 그 이후로는 바이트코드를 변환하는 작업이 줄어들어 일반적으로 실행속도가 빨라진다.
+
+### Reference
+
+- [JVM의 Runtime Data Area](https://www.holaxprogramming.com/2013/07/16/java-jvm-runtime-data-area/)
+- [JVM 이란?](https://medium.com/@lazysoul/jvm-%EC%9D%B4%EB%9E%80-c142b01571f2)
+- [JIT(Jusst In Time)](https://medium.com/@lazysoul/jit-just-in-time-16bb63f3ae26)
