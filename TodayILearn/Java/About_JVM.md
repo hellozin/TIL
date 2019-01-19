@@ -8,23 +8,23 @@ Java는 작성한 Java Source File을 Java Compiler로 Java Byte Code(.class)를
 하지만 JVM의 해석과정 때문에 C언어 같은 네이티브 언어보다 속도가 떨어지는 문제가 있었지만 JIT(Just In Time) 컴파일러를 구현해 이점을 극복했다.
 
 즉, **Byte Code는 JVM 위에서 OS에 상관없이 실행 가능하다.**
-
+<br/>
 ## JVM의 기본적인 기능
 
 - 자바 프로그램이 기기, 운영체제에 상관없이 실행될 수 있도록 하는 것.
 - 프로그램 메모리를 관리하고 최적화하는 것.
-
+<br/>
 ## JVM의 구조
 
 <figure>
     <img src="https://www.guru99.com/images/1/2.png" width="70%">
     <figcaption>이미지 출처: https://www.guru99.com/java-virtual-machine-jvm.html</figcaption>
 </figcaption>
-
+<br/>
 ### Class Loader
 
 Run time 시점에 클래스를 로딩하게 해주며 클래스의 인스턴스를 생성하면 **Class Loader**를 통해 메모리에 로드된다.
-
+<br/>
 ### Runtime Data Area
 
 **Method Area**
@@ -66,13 +66,13 @@ JVM은 Stacks-Base한 방식, CPU에 직접 Instruction을 수행하지 않고 S
 **Native Method Stacks**
 
 자바 이외의 언어에서 제공되는 Method의 정보가 저장되는 영역, JNI를 통해 표준에 가까운 방식으로 구현할 수 있다.
-
+<br/>
 ### Execution Engine
 
 바이트코드를 실행하는 Runtime Module. Class Loader를 통해 JVM 내의 Runtime Data Areas에 배치된 바이트코드는 Execution Engine에 의해 실행되며, 바이트코드의 명령어 단위로 읽어서 실행한다.
 
 초기 JVM은 Interpreter 방식을 사용해 속도가 느리다는 단점이 있었지만 JIT compiler 방식을 통해 이점을 보완했다. 하지만 JIT 또한 변환하는데 비용이 발생하기 때문에 모든 코드를 JIT 방식으로 컴파일 하지 않고 Interpreter 방식을 사용하다 일정한 기준이 넘어가면 JIT compiler 방식을 사용한다.
-
+<br/>
 ### JIT compile
 
 전통적인 컴파일 기법은 interpreter 방식과 static compile 방식으로 나눌 수 있는데 Interpreter 방식은 Runtime에 프로그래밍 언어를 읽어가며 해당 기능에 대응하는 기계어 코드를 실행하고 static compile은 실행하기 전에 컴파일을 완료한다.
@@ -80,7 +80,7 @@ JVM은 Stacks-Base한 방식, CPU에 직접 Instruction을 수행하지 않고 S
 JIT는 두 가지 방식을 혼합한 방식으로 이해할 수 있는데 Runtime 시 Interpreter 방식으로 기계어 코드를 생성하며 동시에 캐싱해 같은 기계어 코드를 중복 생성하는 것을 방지한다. 
 
 따라서 이 과정을 위해 초반에 메모리를 할당하는 등 선행작업에 의해 초기 실행속도는 다소 느릴 수 있지만 그 이후로는 바이트코드를 변환하는 작업이 줄어들어 일반적으로 실행속도가 빨라진다.
-
+<br/>
 ### Reference
 
 - [JVM의 Runtime Data Area](https://www.holaxprogramming.com/2013/07/16/java-jvm-runtime-data-area/)
