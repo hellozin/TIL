@@ -9,10 +9,12 @@ Java는 작성한 Java Source File을 Java Compiler로 Java Byte Code(.class)를
 
 즉, **Byte Code는 JVM 위에서 OS에 상관없이 실행 가능하다.**
 <br/>
+<br/>
 ## JVM의 기본적인 기능
 
 - 자바 프로그램이 기기, 운영체제에 상관없이 실행될 수 있도록 하는 것.
 - 프로그램 메모리를 관리하고 최적화하는 것.
+<br/>
 <br/>
 ## JVM의 구조
 
@@ -21,9 +23,11 @@ Java는 작성한 Java Source File을 Java Compiler로 Java Byte Code(.class)를
     <figcaption>이미지 출처: https://www.guru99.com/java-virtual-machine-jvm.html</figcaption>
 </figcaption>
 <br/>
+<br/>
 ### Class Loader
 
 Run time 시점에 클래스를 로딩하게 해주며 클래스의 인스턴스를 생성하면 **Class Loader**를 통해 메모리에 로드된다.
+<br/>
 <br/>
 ### Runtime Data Area
 
