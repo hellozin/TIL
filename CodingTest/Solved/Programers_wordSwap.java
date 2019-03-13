@@ -9,22 +9,28 @@ import java.util.*;
 class Programers_wordSwap {
 
     public int solution(String begin, String target, String[] words) {
-        int times = 0;
-
         int[] visit = new int[words.length];
-        Stack<String> stack = new Stack<>();
-        stack.push(begin);
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(begin);
+        queue.offer(null);
 
-        while(!stack.empty()) {
-            String src = stack.pop();
-            if(src.equals(target)) {
+        int times = 0;
+        while(!queue.isEmpty()) {
+            String src = queue.poll();
+            if(src == null) {
+                if(queue.peek() == null) {
+                    /* Nothing in next step */
+                    return 0;
+                }
+                times++;
+                queue.offer(null);
+            } else if(src.equals(target)) {
                 return times;
             }
-            times++;
 
-            for (int i = 0; i < words.length; i++) {
+            for (int i = 0; src != null && i < words.length; i++) {
                 if (visit[i] == 0 && changeable(src, words[i])) {
-                    stack.push(words[i]);
+                    queue.offer(words[i]);
                     visit[i] = 1;
                 }
             }
