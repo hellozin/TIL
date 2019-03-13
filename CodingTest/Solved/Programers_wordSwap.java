@@ -39,15 +39,15 @@ class Programers_wordSwap {
     }
 
     private boolean changeable(String src, String dst) {
-        int count = 0;
+        int diffCnt = 0;
         for (int i = 0; i < src.length(); i++) {
             if(src.charAt(i) != dst.charAt(i)) {
-                count++;
-                if(count > 1) {
+                diffCnt++;
+                if(diffCnt > 1) {
                     return false;
                 }
             }
         }
-        return count == 0 ? false : true;
+        return diffCnt == 1;
     }
 }
