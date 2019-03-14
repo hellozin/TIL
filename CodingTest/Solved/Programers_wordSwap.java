@@ -9,25 +9,29 @@ import java.util.*;
 class Programers_wordSwap {
 
     public int solution(String begin, String target, String[] words) {
-        int[] visit = new int[words.length];
         Queue<String> queue = new LinkedList<>();
         queue.offer(begin);
         queue.offer(null);
-
-        int times = 0;
+        
+        int depth = 0;
+        int[] visit = new int[words.length];
         while(!queue.isEmpty()) {
             String src = queue.poll();
+            
             if(src == null) {
                 if(queue.peek() == null) {
                     /* Nothing in next step */
                     return 0;
                 }
-                times++;
+                depth++;
+                
+                /* End of sibling */
                 queue.offer(null);
             } else if(src.equals(target)) {
-                return times;
+                return depth;
             }
 
+            /* Add next steps */
             for (int i = 0; src != null && i < words.length; i++) {
                 if (visit[i] == 0 && changeable(src, words[i])) {
                     queue.offer(words[i]);
@@ -48,6 +52,10 @@ class Programers_wordSwap {
                 }
             }
         }
+        /* 
+         * if diff one char 
+         * return true 
+         */
         return diffCnt == 1;
     }
 }
