@@ -12,6 +12,15 @@ class Programers_wordSwap {
         Queue<String> queue = new LinkedList<>();
         queue.offer(begin);
         queue.offer(null);
+
+        /***
+         * Queue
+         * hit null
+         * hot null
+         * dot lot null
+         * dog log null
+         * cog -> return
+         */
         
         int depth = 0;
         int[] visit = new int[words.length];
@@ -52,7 +61,7 @@ class Programers_wordSwap {
                 }
             }
         }
-        /* 
+        /***
          * if diff one char 
          * return true 
          */
