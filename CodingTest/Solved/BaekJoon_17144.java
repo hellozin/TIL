@@ -36,9 +36,10 @@ public class BaekJoon_17144 {
             }
         }
         /* Set Room End */
-        /* Dust Spread Start*/
+        
         int[][] spreadDust = new int[rowSize][colSize];
         while (time > 0) {
+            /* Dust Spread Start*/
             for (int i = 0; i < rowSize; i++) {
                 for (int j = 0; j < colSize; j++) {
                     for (int dir = 0; dir < 4; dir++) {
