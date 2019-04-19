@@ -67,30 +67,30 @@ public class BaekJoon_17144 {
             /* 바람 방향 반대로 시작 */
             while (upRow > 0 || downRow < rowSize - 1) {
                 if (upRow > 0) {
-                    room[upRow][0] = room[--upRow][0];
+                    room[upRow][0] = room[--upRow][0]; // ↑
                 }
                 if (downRow < rowSize - 1) {
-                    room[downRow][0] = room[++downRow][0];
+                    room[downRow][0] = room[++downRow][0]; // ↓
                 }
             }
-
+            
             for (int col = 0; col < colSize - 1; col++) {
-                room[upRow][col] = room[upRow][col + 1];
-                room[downRow][col] = room[downRow][col + 1];
+                room[upRow][col] = room[upRow][col + 1]; // →
+                room[downRow][col] = room[downRow][col + 1]; // →
             }
 
             while (upRow < purifierUpperRowIdx || downRow > purifierLowerRowIdx) {
                 if (upRow < purifierUpperRowIdx) {
-                    room[upRow][colSize - 1] = room[++upRow][colSize - 1];
+                    room[upRow][colSize - 1] = room[++upRow][colSize - 1]; // ↓
                 }
                 if (downRow > purifierLowerRowIdx) {
-                    room[downRow][colSize - 1] = room[--downRow][colSize - 1];
+                    room[downRow][colSize - 1] = room[--downRow][colSize - 1]; // ↑
                 }
             }
 
             for (int col = colSize - 1; col > 1; col--) {
-                room[upRow][col] = room[upRow][col - 1];
-                room[downRow][col] = room[downRow][col - 1];
+                room[upRow][col] = room[upRow][col - 1]; // ←
+                room[downRow][col] = room[downRow][col - 1]; // ←
             }
 
             room[purifierUpperRowIdx][1] = 0; room[purifierLowerRowIdx][1] = 0;
