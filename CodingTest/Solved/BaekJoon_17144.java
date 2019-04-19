@@ -36,19 +36,21 @@ public class BaekJoon_17144 {
             }
         }
         /* Set Room End */
-        /* Dust Spread Start*/
+
         int[][] spreadDust = new int[rowSize][colSize];
         while (time > 0) {
+            /* Dust Spread Start*/
             for (int i = 0; i < rowSize; i++) {
                 for (int j = 0; j < colSize; j++) {
-                    for (int dir = 0; dir < 4; dir++) {
-                        int ni = i + di[dir], nj = j + dj[dir];
-                        if (0 <= ni && 0 <= nj && ni < rowSize && nj < colSize
-                                && room[i][j] != -1 /* Air Purifier */
-                                && room[ni][nj] > 0 /* Has Dust */ ) {
-                            int spreadAmount = room[ni][nj] / 5;
-                            spreadDust[i][j] += spreadAmount;
-                            spreadDust[ni][nj] -= spreadAmount;
+                    if(room[i][j] > 0) {
+                        for (int dir = 0; dir < 4; dir++) {
+                            int ni = i + di[dir], nj = j + dj[dir];
+                            if (0 <= ni && 0 <= nj && ni < rowSize && nj < colSize
+                                    && room[ni][nj] != -1) /* Air Purifier */{
+                                int spreadAmount = room[i][j] / 5;
+                                spreadDust[ni][nj] += spreadAmount;
+                                spreadDust[i][j] -= spreadAmount;
+                            }
                         }
                     }
                 }
@@ -66,30 +68,30 @@ public class BaekJoon_17144 {
             /* 바람 방향 반대로 시작 */
             while (upRow > 0 || downRow < rowSize - 1) {
                 if (upRow > 0) {
-                    room[upRow][0] = room[--upRow][0];
+                    room[upRow][0] = room[--upRow][0]; // ↑
                 }
                 if (downRow < rowSize - 1) {
-                    room[downRow][0] = room[++downRow][0];
+                    room[downRow][0] = room[++downRow][0]; // ↓
                 }
             }
 
             for (int col = 0; col < colSize - 1; col++) {
-                room[upRow][col] = room[upRow][col + 1];
-                room[downRow][col] = room[downRow][col + 1];
+                room[upRow][col] = room[upRow][col + 1]; // →
+                room[downRow][col] = room[downRow][col + 1]; // →
             }
 
             while (upRow < purifierUpperRowIdx || downRow > purifierLowerRowIdx) {
                 if (upRow < purifierUpperRowIdx) {
-                    room[upRow][colSize - 1] = room[++upRow][colSize - 1];
+                    room[upRow][colSize - 1] = room[++upRow][colSize - 1]; // ↓
                 }
                 if (downRow > purifierLowerRowIdx) {
-                    room[downRow][colSize - 1] = room[--downRow][colSize - 1];
+                    room[downRow][colSize - 1] = room[--downRow][colSize - 1]; // ↑
                 }
             }
 
             for (int col = colSize - 1; col > 1; col--) {
-                room[upRow][col] = room[upRow][col - 1];
-                room[downRow][col] = room[downRow][col - 1];
+                room[upRow][col] = room[upRow][col - 1]; // ←
+                room[downRow][col] = room[downRow][col - 1]; // ←
             }
 
             room[purifierUpperRowIdx][1] = 0; room[purifierLowerRowIdx][1] = 0;
