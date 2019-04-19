@@ -36,7 +36,11 @@ public class BaekJoon_17144 {
             }
         }
         /* Set Room End */
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 9e3c8f4b10f8cb1c87dc2d39df2a55773d4460db
         int[][] spreadDust = new int[rowSize][colSize];
         while (time > 0) {
             /* Dust Spread Start*/
@@ -74,7 +78,7 @@ public class BaekJoon_17144 {
                     room[downRow][0] = room[++downRow][0]; // ↓
                 }
             }
-
+            
             for (int col = 0; col < colSize - 1; col++) {
                 room[upRow][col] = room[upRow][col + 1]; // →
                 room[downRow][col] = room[downRow][col + 1]; // →
