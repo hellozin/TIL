@@ -68,3 +68,27 @@ org.junit.platform.commons.util.ReflectionUtils.tryToLoadClass(Ljava/lang/String
 SpringBootTest 를 작성하는데 MailSender 와 같이 property를 사용하는 빈이 존재해 실제 테스트에서 사용하지도 않는 설정을 추가해야 한다.
 
 `@TestPropertySource(properties = {"spring.config.location=classpath:/google.yml", "spring.config.location=classpath:/mail.yml"})`
+
+---
+
+### Cause
+
+프로젝트를 멀티모듈로 바꾸기 위해 파일들을 옮기던 중 `DataAccessException`을 가져오지 못하는 상황이 생겼다.
+
+```java
+try {
+		...
+} catch (DataAccessException e) {
+	throw new AuthenticationServiceException(e.getMessage(), e);
+}
+```
+
+모듈을 분리하면서 Spring JPA 의존성을 사용하지 않아 발생한 문제였다. 그렇다고 사용하지 않는 JPA의 의존성을 주입받는건 과한 것같고 코드도 유지하고 싶어 `DataAccessException`이 포함된 의존성만 주입받아 해결했다.
+
+```java
+dependencies {
+	...
+	implementation 'org.springframework:spring-tx'
+	...
+}
+```
