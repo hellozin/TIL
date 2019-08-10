@@ -11,6 +11,8 @@ project(':api') {
 }
 ```
 
+- IntelliJ Spring 프로젝트 생성에서 Gradle Project와 Gradle Config의 차이
+
 ### 아이디어
 
 - [x] 취업 족보 프로그램
