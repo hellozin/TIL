@@ -13,6 +13,8 @@ project(':api') {
 
 - IntelliJ Spring 프로젝트 생성에서 Gradle Project와 Gradle Config의 차이
 
+- 멀티 모듈 사용시 자식 모듈들이 공통으로 사용하는 application.yml은 어떻게 관리?
+
 ### 아이디어
 
 - [x] 취업 족보 프로그램
