@@ -1,9 +1,7 @@
-# 개요
+### 면접 대비
 
-자기소개서, 면접을 위해 공부한 내용 정리 혹은 면접 질문에 대해 기록하는 문서입니다.
-
-### 공부한 내용
-
-- Java : Java 8을 주로 사용하며 Optional, Stream을 올바르게 사용하려 노력합니다.
-- Spring : Spring MVC의 Dispatcher Servlet, Filter 구조에 대해 간단히 알고 Security와 Jwt, OAuth를 사용해 기본적인 보안 적용을 해보았습니다. JPA는 사용은 하지만 깊이 알기 위해 공부중입니다.
-- 
+- Java의 main 메소드는 왜 public static void 일까?
+- Linked Hash Map과 Tree Map, Hash Map의 차이점
+- interface와 abstract class의 차이
+- Left Right와 inner outer join의 차이
+- JPA에서 update 시 전체 필드가 업데이트 되는데 @DynamicUpdate 로 했을때의 장단점

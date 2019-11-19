@@ -213,6 +213,16 @@ List<Post> findByAuthor_IdOrderByCreatedDateDesc(Long authorId);
 
 특정 조건절을 모듈화 할 수 있다. Predicate와 유사
 
+**의존성**
+
+jpamodelgen
+
+**설정**
+
+annotation processor에 다음 내용추가
+
+org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor
+
 ```java
 public class Specs {
   public static Specification<Comment> isGood() {
