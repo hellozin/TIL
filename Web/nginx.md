@@ -2,7 +2,7 @@
 
 Apache 보다 적은 자원으로 더 빠르게 데이터를 서비스
 
-### 기본적인 설정 파일
+## 기본적인 설정 파일
 
 - nginx.conf : 애플리케이션 기본 환경 설정
 - mime.conf : 파일 확장명과 MIME 타입 목록
@@ -56,7 +56,7 @@ http {
 > Nginx의 설정파일 예시
 > https://www.nginx.com/resources/wiki/start/topics/examples/full/
 
-### Reverse Proxy
+## Reverse Proxy
 
 유저와 서버 사이에서 요청에 따라 알맞은 서버로 전달하는 용도로 많이 사용
 
@@ -102,3 +102,9 @@ server {
   }
 }
 ```
+
+## Reverse Proxy 할 때 Custom Header Pass 방법
+
+[공식문서](http://nginx.org/en/docs/http/ngx_http_core_module.html#underscores_in_headers)
+
+http or server 블럭에 `underscores_in_headers on;` 추가
