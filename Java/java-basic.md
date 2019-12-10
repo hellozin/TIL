@@ -14,3 +14,26 @@
 ## static 키워드
 
 JVM에 따라 다르지만 일반적으로 Class가 로딩되는 시점에 static 멤버가 생성된다. 따라서 객체의 생성 없이 사용이 가능하다.
+
+## Anonymous Inner Class
+
+```java
+class Stub {
+  String name;
+  int value;
+  // const, getter
+}
+```
+
+```java
+Stub stub = new Stub() {
+    @Override
+    public String getName() {
+      return "anything";
+    }
+    @Override
+    public int getValue() {
+      return 1;
+    }
+}
+```
