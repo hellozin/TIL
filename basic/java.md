@@ -2,7 +2,7 @@
 
 ## Java Thread
 
-OS의 process, thread와 java의 process, thread는 어떻게 같고 어떻게 다를까?
+### OS의 process, thread와 java의 process, thread는 어떻게 같고 어떻게 다를까?
 
 리눅스와 대부분의 유닉스 시스템은 thread 생성을 위해 pthread(POSIX thread)의 구현체를 제공한다. Java thread는 이를 통해 JVM에서 리눅스 thread를 생성하고 삭제하고 관리한다.
 
