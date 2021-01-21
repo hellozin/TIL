@@ -2,6 +2,10 @@
 
 [Official Cheat Sheet](https://helm.sh/ko/docs/helm/)
 
+### add stable repo
+
+- `helm repo add stable https://charts.helm.sh/stable`
+
 ### search
 
 - `helm search repo(local) <keyword>`
@@ -13,6 +17,12 @@
 - `helm install <release-name> <chart-zip-file>`
 - `helm install <release-name> <path/to/chart>`
 - `helm install <release-name> <url-to-chart-zip-file>`
+
+### fetch
+
+차트 zip 파일을 로컬에 다운로드한다.
+
+- `helm fetch <chart-name>`
 
 ### status
 
