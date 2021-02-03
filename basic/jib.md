@@ -1,6 +1,6 @@
 Java Application을 효율적으로 Docker 혹은 OCI 이미지로 빌드해주는 툴
 
-### Feature
+## Feature
 
 - Application을 여러 layer로 나누기 때문에 변경에 대해 더욱 빠른 빌드
 - 재빌드를 해도 동일한 이미지를 생성해 불필요한 업데이트 트리거를 발생하지 않는다.
@@ -10,7 +10,9 @@ Java Application을 효율적으로 Docker 혹은 OCI 이미지로 빌드해주�
 
 ?? JIB는 어떤 기준으로 build layer를 나눌까?
 
-### Usage (maven)
+## Usage (maven)
+
+### Only one command
 
 build 후 container registry로 push
 
@@ -24,7 +26,9 @@ build 후 docker deamon으로 전송
 mvn compile com.google.cloud.tools:jib-maven-plugin:2.7.1:dockerBuild
 ```
 
-maven 빌드에 포함하고 싶은 경우
+### Build with maven
+
+` pom.xml`에 아래 플러그인 추가
 
 ```
 <project>
@@ -47,6 +51,18 @@ maven 빌드에 포함하고 싶은 경우
   </build>
   ...
 </project>
+```
+
+build 후 container registry로 push
+```
+mvn compile jib:build
+```
+
+build 후 docker deamon으로 전송
+
+```
+mvn compile jib:dockerBuild
+
 ```
 
 ### Reference
