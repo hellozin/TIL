@@ -8,8 +8,6 @@ Java Application을 효율적으로 Docker 혹은 OCI 이미지로 빌드해주�
 - Build 시 기존 Docker Build와 달리 Docker 설치(deamon)가 필요없다
 - Docker에 대한 깊은 지식이 없어도 best-practice를 구현한다
 
-?? JIB는 어떤 기준으로 build layer를 나눌까?
-
 ## Usage (maven)
 
 ### Only one command
@@ -62,8 +60,28 @@ build 후 docker deamon으로 전송
 
 ```
 mvn compile jib:dockerBuild
-
 ```
+
+### Feature
+
+**변경되지 않은 layer도 계속 빌드되는 이유가 뭘까?**
+
+`dive` 툴로 확인해보면 layer가 나뉘어 있지만 JIB 빌드 시 변경되지 않은 layer도 빌드에 포함되는 현상을 발견했다. 이건 좀 더 확인해보자.
+
+**JIB의 장점 중 하나인 reproducibility는 뭘 의미할까?**
+
+도커 데몬, 도커 허브, 쿠버네티스는 컨테이너 이미지의 이미지 콘텐츠, 메타데이터의 digest 혹은 해시로 식별하는데 JIB는 일관된 순서로 파일과 폴더를 추가하고 모두 동일한 timestamp를 가지게 한다.
+
+**JIB 빌드 레이어는 어떻게 나뉘어질까?**
+
+Jib applications are split into the following layers:
+
+- Classes
+- Resources
+- Project dependencies
+- Snapshot dependencies
+- All other dependencies
+- Each extra directory (jib.extraDirectories in Gradle, <extraDirectories> in Maven) builds to its own layer
 
 ### Reference
 
