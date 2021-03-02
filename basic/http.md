@@ -59,3 +59,14 @@ TLS를 사용할 경우 서버에 접근하기 위해 인증서를 요청해야 
 이 문제를 해결하기 위해 TLS handshake에 host 정보를 추가하는 것이 SNI이다.
 
 [TLS Connection을 도식화한 문서](https://tls.ulfheim.net/)에서 Client Hello 부분을 살펴보면 SNI가 어떻게 추가되는지 알 수 있다.
+
+nginx에 SNI가 설정되어있는지는 `nginx -V` 명령어로 확인할 수 있다.
+
+```
+$ nginx -V
+nginx version: nginx/1.2.8
+built by gcc 4.1.2 20080704 (Red Hat 4.1.2-54)
+TLS SNI support enabled
+...
+출처: https://rocksea.tistory.com/186 [Rocksea - knowledge creator]
+```
