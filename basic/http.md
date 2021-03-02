@@ -1,5 +1,7 @@
 - [Content-Type](#content-type)
   - [Request Body 인코딩, url encoded? json?](#request-body-인코딩-url-encoded-json)
+- [TLS](#tls)
+    - [SNI: Server Name Indication](#sni-server-name-indication)
 
 # Content-Type
 
@@ -45,3 +47,15 @@ For this reason I try to use application/x-www-form-urlencoded as much as possib
 **Reference**
 
 - [Request body encoding: JSON? x-www-form-urlencoded?](https://dev.to/bcanseco/request-body-encoding-json-x-www-form-urlencoded-ad9)
+
+# TLS
+
+### SNI: Server Name Indication
+
+서버가 하나의 IP 주소에 여러개의 도메인을 가지고 있는 경우 클라이언트는 요청 HTTP header에 host를 명시해 어느 도메인에 접근할 지 결정할 수 있다.
+
+TLS를 사용할 경우 서버에 접근하기 위해 인증서를 요청해야 하는데 TLS handshake 과정에서는 HTTP header를 참조할 수 없기 때문에 어느 도메인의 인증서를 줘야 할지 알 수 없다.
+
+이 문제를 해결하기 위해 TLS handshake에 host 정보를 추가하는 것이 SNI이다.
+
+[TLS Connection을 도식화한 문서](https://tls.ulfheim.net/)에서 Client Hello 부분을 살펴보면 SNI가 어떻게 추가되는지 알 수 있다.
