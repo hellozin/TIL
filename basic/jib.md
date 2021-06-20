@@ -83,6 +83,12 @@ Jib applications are split into the following layers:
 - All other dependencies
 - Each extra directory (jib.extraDirectories in Gradle, <extraDirectories> in Maven) builds to its own layer
 
+**class path에서 의존성 load 시 정렬 문제**
+
+프로젝트의 class path에서 의존성을 가져올 때 host의 file system에 따라 순서가 달라지는 문제가 있었다. 좀 더 확인해보자.
+
+https://newreleases.io/project/github/GoogleContainerTools/jib/release/v2.7.0-gradle
+
 ### Reference
 
 - [https://github.com/GoogleContainerTools/jib](https://github.com/GoogleContainerTools/jib)
